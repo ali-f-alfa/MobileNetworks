@@ -8,7 +8,11 @@
     <fragment
         android:id="@+id/noteFragment"
         android:name="com.example.note.ui.NoteFragment"
-        android:label="NoteFragment" />
+        android:label="NoteFragment" >
+        <argument
+            android:name="Note"
+            app:argType="com.example.note.model.Note" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.note.ui.HomeFragment"
