@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.LayoutInflaterCompat
 import androidx.core.view.ViewPropertyAnimatorListenerAdapter
@@ -20,6 +21,7 @@ import com.example.note.model.ui.ItemViewNote
 import java.time.LocalDateTime
 import java.time.Month
 import java.util.*
+import android.util.Log
 import java.util.zip.Inflater
 
 class HomeFragment : Fragment(R.layout.home_fragment) {
@@ -45,12 +47,20 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 //        }
 
         val recyclerView: RecyclerView = binding.recyclerView
-        val notes: List<Note> = listOf(
+        val notes: MutableList<Note> = mutableListOf(
             Note( "title 1", "description 1", LocalDateTime.now()),
             Note( "title 2", "description 2", LocalDateTime.of(2020,Month.JUNE,12,13,1)),
             Note( "title 3", "description 3", LocalDateTime.of(2021,Month.JUNE,12,13,1)),
             Note( "title 4", "description 4", LocalDateTime.of(2019,Month.JUNE,12,13,1)),
             Note( "title 5", "description 5", LocalDateTime.of(2022,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
+            Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
             Note( "title 6", "description 6", LocalDateTime.of(2030,Month.JUNE,12,13,1)),
         )
 
@@ -58,6 +68,12 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         val layoutManager = LinearLayoutManager(view.context)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = customAdapter
+        customAdapter.setOnItemClickListener(object : CustomAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Log.d("Card Clicked", position.toString() + " " + notes[position].description)
+            }
+
+        })
 
     }
 }
